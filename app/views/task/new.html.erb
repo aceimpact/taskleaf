@@ -2,6 +2,8 @@
 
 <h1>タスク新規登録</h1>
 
+<%= link_to "一覧", root_path, class: "link" %>
+
 <%= bootstrap_form_for(@task) do |form| %>
     <%= form.text_field :name, label: "名称" %>
 

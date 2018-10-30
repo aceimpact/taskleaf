@@ -1,7 +1,10 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
+/* universal */
+.link {
+  margin-left: auto;
+}
 
 /* header */
 #logo {
@@ -19,5 +22,3 @@ header {
   background-color: gray;
   height: 60px;
 }
-
-/* index */

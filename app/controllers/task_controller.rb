@@ -23,9 +23,7 @@ class TaskController < ApplicationController
 
   def update
     @task = Task.find_by!(id: params[:id])
-    @task.task_name = params[:name]
-    @task.description = params[:description]
-    @task.save
+    @task.update_attributes(task_params)
     redirect_to root_url
 
   end
