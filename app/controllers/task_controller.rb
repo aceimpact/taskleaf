@@ -1,7 +1,7 @@
 class TaskController < ApplicationController
 
   def index
-    @tasks = Task.all.order(created_at: :desc)
+    @tasks = Task.order(created_at: :desc)
   end
 
   def new
@@ -9,28 +9,37 @@ class TaskController < ApplicationController
   end
 
   def edit
+    @task = Task.find_by!(id: params[:id])
   end
 
   def create
-    @task = Task.new (task_params)
+    @task = Task.new(task_params)
       if @task.save
-        redirect_to :action => "index"
+        redirect_to root_url
       else
-        render :action => "new"
+        render new_task_url
       end
   end
 
   def update
+    @task = Task.find_by!(id: params[:id])
+    @task.task_name = params[:name]
+    @task.description = params[:description]
+    @task.save
+    redirect_to root_url
 
   end
 
   def destroy
+    @task = Task.find_by!(id: params[:id])
+    @task.destroy
+    redirect_to root_url
   end
 
   private
 
   def task_params
-    params.permit(:task_name,:description)
+    params.require(:task).permit(:name, :description)
   end
 
 end
