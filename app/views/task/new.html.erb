@@ -1,0 +1,15 @@
+<% provide(:title, '新規登録') %>
+
+<h1>タスク新規登録</h1>
+
+<%= link_to "一覧", root_path, class: "link" %>
+
+<%= bootstrap_form_for(@task) do |form| %>
+    <%= form.text_field :name, label: "名称" %>
+
+
+    <%= form.text_area :description, label: "詳しい説明" %>
+
+    <%= form.submit "登録する", class: "btn btn-primary" %>
+
+  <% end %>
