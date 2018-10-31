@@ -12,6 +12,8 @@ gem 'sass-rails'
 gem 'devise'
 gem 'haml-rails'
 gem 'bootstrap_form'
+gem 'pry-rails'
+gem 'pry-doc'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
