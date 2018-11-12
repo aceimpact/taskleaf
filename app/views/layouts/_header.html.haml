@@ -1,0 +1,14 @@
+%body
+  %header.navbar.navbar-dark.bg-dark.navbar-fixed-top
+
+    %h2
+      = link_to 'Taskleaf', root_path, id: "logo"
+    %nav
+    %ul.nav.nav-pills
+      - if user_signed_in?
+        %li.nav-item= link_to 'マイページ', user_path(current_user)
+        %li.nav-item= link_to 'プロフィール変更', edit_user_registration_path
+        %li.nav-item= link_to 'ログアウト', destroy_user_session_path, method: :delete
+      - else
+        %li.nav-item= link_to '新規登録', new_user_registration_path
+        %li.nav-item= link_to 'ログイン', new_user_session_path

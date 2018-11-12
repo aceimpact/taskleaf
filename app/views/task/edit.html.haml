@@ -1,0 +1,7 @@
+- provide(:title, 'タスク編集')
+%h1 タスク編集
+= link_to "一覧", root_path, class: "link"
+= bootstrap_form_for(@task) do |form|
+  = form.text_field :name, label: "名称", value: "#{@task.name}"
+  = form.text_area :description, label: "詳しい説明", value: "#{@task.description}"
+  = form.submit "更新する", class: "btn btn-primary"

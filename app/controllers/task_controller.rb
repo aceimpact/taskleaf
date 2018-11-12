@@ -1,16 +1,17 @@
 class TaskController < ApplicationController
-    before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
     @tasks = Task.order(created_at: :desc)
   end
 
   def new
-    @task = Task.new
+    @task = current_user.tasks.build
   end
 
   def edit
-    @task = Task.find_by!(id: params[:id])
+    @task = current_user.tasks.find(params[:id])
   end
 
   def create
