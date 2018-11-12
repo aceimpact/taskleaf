@@ -1,0 +1,13 @@
+- provide(:title,"マイページ")
+.row
+  %aside.col-md-4
+    %section.user_info
+      %h1 マイページ
+      %p
+        メールアドレス
+        %br/
+           #{@user.email}
+      = link_to 'プロフィールの変更', edit_user_registration_path
+      %p
+        = link_to "削除", user_path, method: :delete, |
+          data: { confirm: "You sure?" }            |
